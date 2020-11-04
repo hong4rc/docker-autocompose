@@ -24,7 +24,7 @@ def render(struct, args, networks):
         pyaml.p(OrderedDict(struct))
     else:
         pyaml.p(OrderedDict({'version': '"3"', 'services': struct, 'networks': networks}))
-    
+
 
 def generate(cname):
     c = docker.from_env()
@@ -92,7 +92,7 @@ def generate(cname):
 
     # Check for command and add it if present.
     if cattrs['Config']['Cmd'] != None:
-        values['command'] = " ".join(cattrs['Config']['Cmd']),
+        values['command'] = cattrs['Config']['Cmd']
 
     # Check for exposed/bound ports and add them if needed.
     try:
